@@ -17,7 +17,7 @@ const required = (name: string) => {
 
 const MONGO_URL = process.env.MONGO_URL || 'mongodb://127.0.0.1:27017/seminari7';
 
-const CORS_ORIGIN = process.env.CORS_ORIGIN || '*';
+const CORS_ORIGIN = process.env.CORS_ORIGIN || 'http://localhost:4200';
 
 const SERVER_PORT = process.env.SERVER_PORT ? Number(process.env.SERVER_PORT) : 1337;
 

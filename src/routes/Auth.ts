@@ -9,7 +9,11 @@ import { Schemas, ValidateJoi } from '../middleware/Joi';
 const router = express.Router();
 router.post('/register', ValidateJoi(Schemas.auth.register), controller.register);
 router.post('/login', ValidateJoi(Schemas.auth.login), controller.login);
-router.post('/refresh', ValidateJoi(Schemas.auth.refresh), controller.refresh);
+//================================
+// /refresh ya no valida el body con Joi porque el refresh token viaja en la cookie HttpOnly
+router.post('/refresh', controller.refresh);
+router.post('/logout', controller.logout);
+//================================
 export = router;
 
 // Documentacion de Swagger de las tres rutas.

@@ -14,6 +14,10 @@ import swaggerDocument from './config/swagger'; // importa el documento que hemo
 import userRoutes from './routes/Users';
 import { StartChat } from './sockets/Chat';
 
+//================================
+import cookieParser from 'cookie-parser';
+//================================
+
 const router = express();
 
 /** Connect to Mongo */
@@ -31,6 +35,10 @@ const StartServer = () => {
 
     router.use(express.urlencoded({ extended: true }));
     router.use(express.json());
+
+    //================================
+    router.use(cookieParser());
+    //================================
 
     /** CORS */
     router.use(Cors);

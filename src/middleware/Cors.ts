@@ -7,6 +7,11 @@ import { config } from '../config/config';
 // el propio paquete cors.
 export const Cors = cors({
     origin: config.cors.origin,
+
+    //=========================
+    credentials: true,
+    //=========================
+
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization']
 });
