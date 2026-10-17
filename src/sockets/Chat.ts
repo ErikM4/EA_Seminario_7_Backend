@@ -76,6 +76,10 @@ export const StartChat = (server: http.Server) => {
         onlineUsers.set(userId, (onlineUsers.get(userId) ?? 0) + 1);
         emitOnlineUsers();
 
+        //================================
+        socket.broadcast.emit('user:connected', { userId });
+        //================================
+
         // El cliente pide entrar a una sala, por ejemplo "general".
         socket.on('chat:join', async (payload: ChatJoinPayload) => {
             // Los tipos de TypeScript no validan los datos que llegan por la red;
@@ -161,6 +165,9 @@ export const StartChat = (server: http.Server) => {
             } else {
                 onlineUsers.delete(userId);
                 emitOnlineUsers();
+                //================================
+                socket.broadcast.emit('user:disconnected', { userId });
+                //================================
             }
         });
     });
